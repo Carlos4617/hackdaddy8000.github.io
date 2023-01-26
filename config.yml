@@ -1,12 +1,12 @@
 baseURL: 'https://hugo-ladder.pages.dev'
-title: LADDER
+title: hackdaddy.dev
 theme: hugo-theme-ladder
 license: MIT
 licenselink: 'https://github.com/guangzhengli/hugo-theme-ladder/blob/master/LICENSE'
-description: 'A fast, clean Hugo theme'
-homepage: 'https://hugo-ladder.pages.dev'
+description: 'The Omega Cyber God'
+homepage: 'https://hackdaddy.dev'
 defaultContentLanguage: 'en'
-googleAnalytics: G-4WXJ5TEK2S
+googleAnalytics: G-6ZDD26V00X
 paginate: 10
 menu:
   main:
@@ -22,15 +22,12 @@ menu:
     - name: Guestbook
       url: /guestbook
       weight: 4
-    - name: Dashboard
-      url: https://umami-ochre-nu.vercel.app/share/R1lHz7QY/hugo-ladder-exampleSite
-      weight: 5
 params:
   brand: HOME
   avatarURL: /images/avatar.png
-  author: Hugo Ladder
-  authorDescription: A clean, fast hugo theme focused on Reading
-  info: Ladder is a clean, simple but beautiful theme with awesome features
+  author: Bryce
+  authorDescription: The Omega Cyber God
+  info: Here are more in-depth articles about my creations that I know wouldn't make good videos. Feel free to contribute to them on GitHub.
   favicon: /images/avatar.png
   options:
     showDarkMode: true
@@ -41,23 +38,23 @@ params:
   comments:
     giscus:
       enable: true
-      repo: guangzhengli/hugo-ladder-exampleSite
-      repo_id: R_kgDOHyVOjg
+      repo: hackdaddy8000/hackdaddy8000.github.io
+      repo_id: 593211990
       category: Announcements
-      category_id: DIC_kwDOHyVOjs4CQsH7
+      category_id: DIC_kwDOI1uyVs4CTztD
       mapping: pathname
       position: top
       lang: en # pick a language from https://github.com/giscus/giscus/tree/main/locales
     utteranc:
       enable: false
-      repo: guangzhengli/blog-comments
+      repo: hackdaddy8000/hackdaddy8000.github.io
       issueTerm: pathname
   analytics:
     google:
       SiteVerificationTag: xxx
     umami:
-      enable: true
-      website_id: 2320eaa6-a90b-471c-b6ca-e79dadde8c4c
+      enable: false
+      website_id: beans
       url: https://umami-ochre-nu.vercel.app/hugo-ladder.js
   guestbook:
     title: Guestbook
@@ -96,9 +93,6 @@ languages:
         - name: 留言板
           url: /guestbook
           weight: 4
-        - name: 网站统计
-          url: https://umami-ochre-nu.vercel.app/share/R1lHz7QY/hugo-ladder-exampleSite
-          weight: 5
 taxonomies:
   series: series
   tag: tags
