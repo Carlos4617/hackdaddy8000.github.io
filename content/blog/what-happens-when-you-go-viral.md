@@ -11,7 +11,7 @@ Aside from my post, it has been reposted by other people [on Twitter with 77K li
 ### First Hate comment
 
 I want to commemorate my first hate comment of all time.
-!["Get a life"](/static/images/hate-comment.jpg)
+!["Get a life"](/images/hate-comment.jpg)
 For the rest of my life I will wonder what infuriated this person so much.
 
 ### Barstool Sports
@@ -29,7 +29,7 @@ In order to submit a video, you must fill out [this form](https://www.barstoolsp
     Them: "We just say that to protect us from other companies that will try to copyright us if you don’t submit"
     Me: "If I don’t submit? If I don’t agree to the contract then I don’t see how the wording of the contract could possible protect you. Even if it did, if I never signed the copyright to you then how could you possibly protect yourself from copyright infringement if I or some other company has ownership."
     Them: "Have a good day"
-](/static/images/barstool-dm.jpg)
+](/images/barstool-dm.jpg)
 
 I have never felt so disrespected in my life. Even though I cited specific points in their agreement, they tried lying in order to fool me into signing an unfair contract twice. Barstool Sports is worth $450 million yet they feel the need to be dishonest in order to get more content for their repost farm. Whoever I was dealing with was extremely confident that it would work because it probably did work on the thousands of people who unwittingly signed away their rights to their own videos without reading the fine text of the agreement.  
 

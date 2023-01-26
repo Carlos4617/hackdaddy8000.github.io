@@ -3,6 +3,7 @@ title: Valorant Robot V2
 date: 2022-07-22 16:43:00
 tags: ["robotics", "3d-printer", "gaming"]
 series: ["Gaming 3D Printer"]
+featured: true
 ---
 
 Yeah, this article is incomplete. I'll get around to finishing it eventually :)
@@ -28,7 +29,7 @@ In this post I will go into technical detail about how I implemented those two t
 ### How to Write Your Own Firmware for 3D Printers
 
 In order to overcome the limitations of the 3D printer's firmware, I opted to write my own. I own a Monoprice Maker Select V2 which uses a [Melzi 2](https://reprap.org/wiki/Melzi) control board.
-![Melzi 2 board](/static/images/melzi2.jpeg)
+![Melzi 2 board](/images/melzi2.jpeg)
 This board uses a Sanguino chip clone. Sanguino is a relatively-powerful microcontroller that is compatible with Arduino software. You can reprogram it the same as a normal Arduino simply by [adding hardware support](https://github.com/Lauszus/Sanguino) for it in the IDE.
 The other half of this control board is a bunch of stepper drivers and other devices built-in and hard-wired into the pins of the Sanguino. They can be used just like any other Arduino device.
 This is the pinout for my printer specifically:
@@ -123,10 +124,10 @@ void setup(void) {
 
 There's one thing I want to note about development on a Melzi board that frustrates me dearly. Stepper motors move in units called "steps" which is dependent on the specific design of the given motor, and is typically 30 degrees. In order to make the motor move a step, you need to alternate the STEP_PIN. If I want to make the motor move 5 steps, I alternate the STEP_PIN 5 times. Stepper motors can also move in half, quarter, eigth and potentially up to 256th of a step depending on the motor. Larger steps make it move faster, and smaller steps allow more precision.
 
-![Stepper driver. It has pins labelled "mode 0", "mode 1", "mode 2", "mode 3"](/static/images/stepper-driver.jpg)
+![Stepper driver. It has pins labelled "mode 0", "mode 1", "mode 2", "mode 3"](/images/stepper-driver.jpg)
 
 Whether the stepper driver will make the motor move in full, half, quater, etc steps depends on what mode it is in. That can be decided by using the mode pins. The melzi pinout doesn't have any pins to choose the mode because the drivers are hard wired to stay on the 1/16th-step mode.
-![Melzi stepper driver diagram](/static/images//melzi-stepper-driver-diagram.jpg)
+![Melzi stepper driver diagram](/images//melzi-stepper-driver-diagram.jpg)
 
 I really wanted to use full steps for large, sweeping motions and then switch to smaller steps for small aim adjustments but because they hard wired it, I just had to make do.
 The speed of the motor depends on how fast you can alternate its STEP_PIN, so I had to make sure performance was a priority in my code. Moving the stepper motor is typically a blocking statement so so the microcontroller has enough processing power to alternate the STEP_PIN in a stable way. I found all the libraries for Stepper motors extremely limiting because they're suited for constant acceleration.
@@ -173,7 +174,7 @@ I started by converting an analog VGA signal to a digital signal and reading it 
 I'm currently working on simplifying it using an HDMI decoder to do all the hard work for me.
 I orignally used VGA because I heard that unencypting HDMI was a nightmare and would be impossible for me to do on an FPGA (while VGA is a very simple format to parse), but I had not considered the fact that there exists a [perfectly good commercial solution that does that for me](https://www.adafruit.com/product/2218?gclid=Cj0KCQiA-JacBhC0ARIsAIxybyPUmDn_PoanpSMtO_eWGXSdpN4ba6pa2LRg-iZQINdxG4CdUco2cz0aAnRpEALw_wcB)
 The current plan is to use a breakout board to get the 40-pin output plugged into my FPGA and then interpret the data there. I can't find any resources on the specifics of which pins are which, but it should be a pixel clock similar to VGA. There is also the possibility that the 40-pin FPC breakout board is not bidirectional. I've only seen videos of people using it to output through the 40-pin connector and not breakout a 40-pin connector to read using an arduino.
-![](/static/images/3dv2chain.jpg)
+![](/images/3dv2chain.jpg)
 
 I expect that the video format is unsophisticated and I can easily parse it using the FPGA.
 
