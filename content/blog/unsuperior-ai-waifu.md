@@ -28,6 +28,7 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 ## Features
   * Completely free with given free credits.
   * Easy to run.
+  * You can interact with her by poking her. I wouldn't recommend it though.
   * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
   * She has various expressions that change depending on her emotion
   * Choose her accent
