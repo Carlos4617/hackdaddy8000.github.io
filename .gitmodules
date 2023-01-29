@@ -1,3 +1,9 @@
 [submodule "themes/hugo-theme-ladder"]
 	path = themes/hugo-theme-ladder
 	url = https://github.com/guangzhengli/hugo-theme-ladder
+[submodule "static/usaw/unsuperior-ai-waifu"]
+	path = static/usaw/unsuperior-ai-waifu
+	url = https://github.com/hackdaddy8000/unsuperior-ai-waifu
+[submodule "static/unsuperior-ai-waifu"]
+	path = static/unsuperior-ai-waifu
+	url = https://github.com/hackdaddy8000/unsuperior-ai-waifu
