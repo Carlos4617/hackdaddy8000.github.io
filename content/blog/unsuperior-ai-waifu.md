@@ -13,12 +13,17 @@ Please read this article so I can teach you how to access this program on hackda
 The program requires you to give it a few API keys it needs to work. I made an HTML form that does all the hard work for you.
 Don't worry about the API keys. They're easy to get and they give you plenty of free credits.
 
-Q: What is an API key?
-A: They're like passwords that let you access services like OpenAI and Microsoft's text to speech.
-Q: Why do I need to get my own API keys? Can't you make them for us? 
-A: They're like passwords. I'm not giving you my password. Make your own account.
-Q: Is this a scam to get my API keys?
-A: No. You don't need a credit card to sign up for these websites. The most I could ever steal are your free credits. Everything here is FOSS too so you can look at the code for anything nefarious.
+> Q: What is an API key?
+> 
+> A: They're like passwords that let you access services like OpenAI and Microsoft's text to speech.
+
+> Q: Why do I need to get my own API keys? Can't you make them for us? 
+> 
+> A: They're like passwords. I'm not giving you my password. Make your own account.
+
+> Q: Is this a scam to get my API keys?
+> 
+> A: No. You don't need a credit card to sign up for these websites. The most I could ever steal are your free credits. Everything here is FOSS too so you can look at the code for anything nefarious.
 
 ## Features
   * Completely free with given free credits.
