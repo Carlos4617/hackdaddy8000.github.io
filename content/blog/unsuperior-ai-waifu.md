@@ -28,9 +28,10 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 ## Features
   * Completely free with given free credits.
   * Easy to run.
-  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth moves based off the phonetic sound she's making. Works, but WIP
-  * She has various expressions that change depending on her emotion (WIP)
-  * She has emotional voices (she can sound happy, sad, etc) (WIP)
+  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
+  * She has various expressions that change depending on her emotion
+  * Choose her accent
+  * She has emotional voices (she can sound happy, sad, etc)
 
 ## How to Procure an OpenAI API Key
 
@@ -69,18 +70,27 @@ The raw code for this page is [here](https://github.com/hackdaddy8000/hackdaddy8
   <label for="speech_region">Azure Speech Region:</label>
   <input type="text" id="speech_region" name="speech_region" required>
   <br>
+  <label for="voice">Choose a voice:</label>
+  <select id="voice" name="voice">
+    <option value="en-US-JennyNeural">Jenny (American)</option>
+    <option value="en-US-JaneNeural">Jane (American)</option>
+    <option value="zh-CN-XiaoxiaoNeural">Xiaoxiao (Chinese)</option>
+    <option value="ja-JP-NanamiNeural">Nanami (Japanese)</option>
+    <option value="en-US-GuyNeural">Guy (American)</option>
+  </select>
+  <br>
   <input type="submit" value="Submit">
 </form>
 <script>
-  document.getElementById("myForm").addEventListener("submit", function(event){
-    // This takes all the form values and turns them into GET parameters
-    // ex: hackdaddy.dev/?GET_PARAM=VALUE
+  document.getElementById("myForm").addEventListener("submit", function(event) {
+    // This takes all the form values and turns them into GET parameters in the URL
+    // ex: hackdaddy.dev/?GET_PARAM1=VALUE&GET_PARAM2=VALUE2
     event.preventDefault();
     var form = event.target;
     var inputs = form.elements;
     var inputs_length = inputs.length;
     var url = form.action + "?";
-    for(var i = 0; i < inputs_length; i++){
+    for(var i = 0; i < inputs_length; i++) {
         if(inputs[i].name != ""){
             url += inputs[i].name + "=" + inputs[i].value + "&";
         }
