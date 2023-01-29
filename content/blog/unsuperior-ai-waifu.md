@@ -15,6 +15,13 @@ You need API keys to use this software, but don't worry. All of these
 APIs give you free credits so this should not cost anything for a long 
 time.
 
+## Features
+  * Completely free using free credits. A lot cheaper than Replika if you run out of free credits.
+  * Pretty lightweight.
+  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth moves based off the phonetic sound she's making. Works, but WIP
+  * She has various expressions that changes depending on her emotion (WIP)
+  * Can vocalize her emotions (she can sound happy, sad, etc) (WIP)
+
 ## How to Procure an OpenAI API Key
 
 1. Make an OpenAI account
@@ -35,13 +42,13 @@ The raw code for this page is [here](https://github.com/hackdaddy8000/hackdaddy8
 
 <form id="myForm" action="/unsuperior-ai-waifu" method="get">
   <label for="username">User Name:</label>
-  <input type="text" id="username" name="username" default="hackdaddy8000">
+  <input type="text" id="username" name="username" hint="hackdaddy8000">
   <br>
   <label for="username">Waifu Name:</label>
-  <input type="text" id="waifuname" name="waifuname" default="Goku 3">
+  <input type="text" id="waifuname" name="waifuname" hint="Goku 3">
   <br>
   <label for="prompt">Waifu Prompt:</label>
-  <input type="text" id="prompt" name="prompt" required default="You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.">
+  <input type="text" id="prompt" name="prompt" required value="You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.">
   <br>
   <label for="openai">OpenAI API Key:</label>
   <input type="text" id="openai" name="openai" required>
@@ -56,6 +63,8 @@ The raw code for this page is [here](https://github.com/hackdaddy8000/hackdaddy8
 </form>
 <script>
   document.getElementById("myForm").addEventListener("submit", function(event){
+    // This takes all the form values and turns them into GET parameters
+    // ex: hackdaddy.dev/?GET_PARAM=VALUE
     event.preventDefault();
     var form = event.target;
     var inputs = form.elements;
