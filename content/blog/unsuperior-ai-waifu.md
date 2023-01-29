@@ -22,6 +22,6 @@ Access the Entry point [here](/unsuperior-ai-waifu/entry.html)
 ## How to procure an Azure Speech Key
 
 1. Make an Azure account
-2. (Create a Speech resource in the azure portal)[https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices]
-3. (Get the API key according to this guide)[https://learn.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-resource]. Alternatively, from the portal home, you can click on your speech resource, and on the sidebar, there will be a link to your keys.
+2. [Create a Speech resource in the azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
+3. [Get the API key according to this guide](https://learn.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-resource). Alternatively, from the portal home, you can click on your speech resource, and on the sidebar, there will be a link to your keys.
 ![](images/speech-portal-key.jpg)
