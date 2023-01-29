@@ -96,3 +96,8 @@ languages:
 taxonomies:
   series: series
   tag: tags
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
