@@ -160,8 +160,8 @@ Fill out this form with all your API keys + other information and it will redire
     var inputs_length = inputs.length;
     var url = form.action + "?";
     for(var i = 0; i < inputs_length; i++) {
-        if(inputs[i].name != ""){
-            url += inputs[i].name + "=" + inputs[i].value + "&";
+        if(inputs[i].name != "" && inputs[i].value != ""){
+            url += inputs[i].name + "=" + inputs[i].value.trim() + "&";
         }
     }
     url = url.slice(0,-1);

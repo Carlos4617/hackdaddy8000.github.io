@@ -33,6 +33,12 @@ form {
     padding: 20px;
 }
 
+@media (prefers-color-scheme: dark) {
+    form {
+        background-color: #292929;
+    }
+}
+
 .col-25 {
     float: left;
     width: 25%;
