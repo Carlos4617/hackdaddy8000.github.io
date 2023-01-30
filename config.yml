@@ -66,7 +66,7 @@ params:
       url: 'https://github.com/hackdaddy8000'
     - name: TikTok
       pre: >-
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 2859 3333" stroke="currentColor" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" class="feather"><path d="M2081 0c55 473 319 755 778 785v532c-266 26-499-61-770-225v995c0 1264-1378 1659-1932 753-356-583-138-1606 1004-1647v561c-87 14-180 36-265 65-254 86-398 247-358 531 77 544 1075 705 992-358V1h551z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 -100 2859 3600" fill="none" stroke="currentcolor" stroke-width="320" stroke-linecap="round" stroke-linejoin="round" class="feather feather-box"><path d="M2081 0c55 473 319 755 778 785v532c-266 26-499-61-770-225v995c0 1264-1378 1659-1932 753-356-583-138-1606 1004-1647v561c-87 14-180 36-265 65-254 86-398 247-358 531 77 544 1075 705 992-358V1h551z"></path></svg>
       url: 'https://tiktok.com/@hackdaddy8000'
 languages:
   en:
