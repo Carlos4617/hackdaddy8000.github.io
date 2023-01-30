@@ -142,14 +142,13 @@ Fill out this form with all your API keys + other information and it will redire
 <script>
   // Loads CSS file to make the form look pretty.
   function loadCSS(filename){ 
-      var file = document.createElement("link");
-      file.setAttribute("rel", "stylesheet");
-      file.setAttribute("type", "text/css");
-      file.setAttribute("href", filename);
-      document.head.appendChild(file);
-   }
-   loadCSS("/css/form.css");
-
+    var file = document.createElement("link");
+    file.setAttribute("rel", "stylesheet");
+    file.setAttribute("type", "text/css");
+    file.setAttribute("href", filename);
+    document.head.appendChild(file);
+  }
+  loadCSS("/css/form.css");
   document.getElementById("myForm").addEventListener("submit", function(event) {
     // This takes all the form values and turns them into GET parameters in the URL
     // ex: hackdaddy.dev/?GET_PARAM1=VALUE&GET_PARAM2=VALUE2
