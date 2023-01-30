@@ -1,5 +1,5 @@
 ---
-title: Valorant Robot V2
+title: Valorant Robot
 date: 2022-07-22 16:43:00
 tags: ["robotics", "3d-printer", "gaming"]
 series: ["Gaming 3D Printer"]
@@ -8,23 +8,65 @@ featured: true
 
 Yeah, this article is incomplete. I'll get around to finishing it eventually :)
 
+## Goal
+
+My friends often call me a "bot" at Valorant because I'm dogwater at the game. The joke was that I would make an actual "bot" that plays better than them. 
+
+## Initial Design (Bad)
+
+### TLDR
+
+I could tell the 3D printer to move to where it sees the red hue of the enemy by sending it GCODE over USB. This did not work.
+
+### Controlling the 3D Printer
+
+Based on the knowledge I initially had on how 3D printers worked, I thought this would be a relatively straightforward project. 3D Printers run gcode files
+which resembles the same logic as python turtle program. When you slice a 3D object file using a program like Cura or Fusion 360, it creates a file containing instructions on how the head of the 3D printer should move.
+
+For example, if you wanted to make the 3D printer move in a square, you would run this gcode on it -
+```
+G91 1 0
+G91 0 1
+G91 -1 0
+G91 0 -1
+```
+where G91 means "move X, Y from the current position" and the second and third parameter are the change in X and Y the head of the 3D printer will undergo.
+This code tells the 3D printer to move one unit up, one unit to the right, one unit down, and finally one unit to the left - making a complete square motion.
+
+These gcode commands can be run either by loading a gcode file on an SD card and running the file on the 3D printer directly, or gcode instructions can be
+enqueued by sending them through a USB serial bus connected from an external device to the 3D printer. I could easily make a python program that sends GCODE to my 3D printer over USB.
+
+```python
+import serial
+
+ser = serial.Serial('/dev/ttyUSB0', 115200)
+
+ser.write("G91 1 0")
+
+ser.close()
+```
+
+### How to Aim
+
+I didn't want to get banned from valorant by tampering with reading memory for enemy locations, so I opted for using image processing to find their location. 
+Enemies in Valorant have a distinct colored glow in order to help players distinguish enemies from the background. Finding enemies was as simple as applying
+a filter for a range around that red hue.
+```
+screenshot
+filter for red
+find centerpoint
+```
+
+### Why this didn't work
+
 I found out that with the default 3D printer firmware, whenever you send a GCODE command to the 3D printer for execution, it adds it to a job queue. It pops from the queue, executes the command, and repeats this. There is no way to clear this queue or cancel a command currently being executed. If the 3D printer is sent commands faster than it can execute them, it will cause the job queue to build up and the 3D printer becomes slow to respond.
 
-I also wanted to offboard everything so Vanguard has nothing to detect, so I made an external device using an FPGA to to analyze the video output of my computer instead of running a script.
+Additionally, how the 3D printer executes those commands was bad. The 3D printer will always decellerate to 0m/s upon completion of a move command. This would cause it to move very roughly because it was frequently stopping and starting.
 
-In this post I will go into technical detail about how I implemented those two things and my process doing so.
 
-- Improvements
-  - [Custom Firmware](#custom-firmware)
-    - [How to Write Your Own Firmware for 3D Printers](#how-to-write-your-own-firmware-for-3d-printers)
-    - [Complications](#complications)
-    - [Custom Firmware Implementation 1 - Inverse P (bad but simple)](#custom-firmware-implementation-1---inverse-p)
-    - [Custom Firmware Implementation 2 - PID](#custom-firmware-implementation-2---pid)
-  - [New Detection System](#new-detection-system)
-  - [New Detection System Again, but with an FPGA](#new-detection-system-again-but-with-an-fpga)
-- [Final Result](#final-result)
+## New Plan
 
-## Custom Firmware
+Clearly, the firmware of the 3D printer was what was holding me back. So let's just get rid of it 🤷.
 
 ### How to Write Your Own Firmware for 3D Printers
 
