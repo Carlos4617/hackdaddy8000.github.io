@@ -72,36 +72,84 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 Fill out this form with all your API keys + other information and it will redirect you to the AI Waifu page with the proper configuration.
 
 <form id="myForm" action="/unsuperior-ai-waifu" method="get">
-  <label for="username">User Name:</label>
-  <input type="text" id="username" name="username" placeholder="hackdaddy8000">
+  <div class="row">
+    <div class="col-25">
+      <label for="username">Your Name:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="username" name="username" placeholder="hackdaddy8000">
+    </div>
+  </div>
+   <div class="row">
+    <div class="col-25">
+      <label for="username">Waifu Name:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="waifuname" name="waifuname" placeholder="Goku 3">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="voice">Choose a voice:</label>
+    </div>
+    <div class="col-75">
+      <select id="voice" name="voice">
+        <option value="en-US-JennyNeural">Jenny (American)</option>
+        <option value="en-US-JaneNeural">Jane (American)</option>
+        <option value="zh-CN-XiaoxiaoNeural">Xiaoxiao (Chinese)</option>
+        <option value="ja-JP-NanamiNeural">Nanami (Japanese)</option>
+        <option value="en-US-GuyNeural">Guy (American)</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="prompt">Personality/Context Prompt:</label>
+    </div>
+    <div class="col-75">
+      <textarea id="prompt" name="prompt" placeholder="Write something.." style="height:200px" value="You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down." required></textarea>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="openai">OpenAI API Key:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="openai" name="openai" placeholder="sk-..." required>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="speech_region">Azure Speech Key:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="speech_key" name="speech_key" required>
+    </div>
+  </div>
+    <div class="row">
+    <div class="col-25">
+      <label for="speech_region">Azure Speech Region:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="speech_region" name="speech_region" placeholder="westus" required>
+    </div>
+  </div>
   <br>
-  <label for="username">Waifu Name:</label>
-  <input type="text" id="waifuname" name="waifuname" placeholder="Goku 3">
-  <br>
-  <label for="prompt">Waifu Prompt:</label>
-  <input type="text" id="prompt" name="prompt" required value="You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.">
-  <br>
-  <label for="openai">OpenAI API Key:</label>
-  <input type="text" id="openai" name="openai" required>
-  <br>
-  <label for="speech_key">Azure Speech Key:</label>
-  <input id="speech_key" name="speech_key" required>
-  <br>
-  <label for="speech_region">Azure Speech Region:</label>
-  <input type="text" id="speech_region" name="speech_region" required>
-  <br>
-  <label for="voice">Choose a voice:</label>
-  <select id="voice" name="voice">
-    <option value="en-US-JennyNeural">Jenny (American)</option>
-    <option value="en-US-JaneNeural">Jane (American)</option>
-    <option value="zh-CN-XiaoxiaoNeural">Xiaoxiao (Chinese)</option>
-    <option value="ja-JP-NanamiNeural">Nanami (Japanese)</option>
-    <option value="en-US-GuyNeural">Guy (American)</option>
-  </select>
-  <br>
-  <input type="submit" value="Submit">
+  <div class="row">
+    <input type="submit" value="Submit">
+  </div>
 </form>
 <script>
+  // Loads CSS file to make the form look pretty.
+  function loadCSS(filename){ 
+      var file = document.createElement("link");
+      file.setAttribute("rel", "stylesheet");
+      file.setAttribute("type", "text/css");
+      file.setAttribute("href", filename);
+      document.head.appendChild(file);
+   }
+   loadCSS("/css/form.css");
+
   document.getElementById("myForm").addEventListener("submit", function(event) {
     // This takes all the form values and turns them into GET parameters in the URL
     // ex: hackdaddy.dev/?GET_PARAM1=VALUE&GET_PARAM2=VALUE2
