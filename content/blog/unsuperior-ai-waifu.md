@@ -107,7 +107,9 @@ Fill out this form with all your API keys + other information and it will redire
       <label for="prompt">Personality/Context Prompt:</label>
     </div>
     <div class="col-75">
-      <textarea id="prompt" name="prompt" placeholder="Write something.." style="height:200px" value="You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down." required></textarea>
+      <textarea id="prompt" name="prompt" placeholder="Write something.." style="height:200px" required>
+        You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.
+      </textarea>
     </div>
   </div>
     <div class="row">
