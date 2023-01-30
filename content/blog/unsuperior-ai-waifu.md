@@ -8,9 +8,26 @@ featured: true
 
 [Github Repo Here](https://github.com/hackdaddy8000/unsuperior-ai-waifu)
 
-Please read this article so I can teach you how to access this program on hackdaddy.dev
+![Demo](/images/usaw-demo.gif)
 
-The program requires you to give it a few API keys it needs to work. I made an HTML form that does all the hard work for you.
+Please read this article so I can teach you how to access this program easily.
+
+## Features
+  * Completely free with given free credits.
+  * Easy to run.
+  * You can interact with her by poking her. I wouldn't recommend it though.
+  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
+  * She has various expressions that change depending on her emotion
+  * Choose her accent
+  * She has emotional voices (she can sound happy, sad, etc)
+  
+## How to Use
+
+You can download [these files](https://github.com/hackdaddy8000/unsuperior-ai-waifu) and open index.html in your web browser. No installation needed. Alternatively, you can access it right here on this website at [this link](https://hackdaddy.dev/unsuperior-ai-waifu).
+
+*** You need to input a few values first or else it won't work.
+
+The program requires you to give it a few API keys that it uses to run. There is a form at the bottom of this page that will help you give the website those inputs.
 Don't worry about the API keys. They're easy to get and they give you plenty of free credits.
 
 > Q: What is an API key?
@@ -23,24 +40,27 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 
 > Q: Is this a scam to get my API keys?
 > 
-> A: No. You don't need a credit card to sign up for these websites. The most I could ever steal are your free credits. Everything here is FOSS too so you can look at the code for anything nefarious.
+> A: No. There's nothing I can really take from you. You don't need a credit card to sign up for these websites. The most I could ever steal are your free credits. Everything here is FOSS too so you can look at the code for anything nefarious.
 
-## Features
-  * Completely free with given free credits.
-  * Easy to run.
-  * You can interact with her by poking her. I wouldn't recommend it though.
-  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
-  * She has various expressions that change depending on her emotion
-  * Choose her accent
-  * She has emotional voices (she can sound happy, sad, etc)
+### How to Procure an OpenAI API Key
 
-## How to Procure an OpenAI API Key
+> Q: Why do I need this?
+>
+> A: This program uses OpenAI's software to create her dialogue. Without this API key, she is literally a husk. She has no soul.
 
 1. Make an OpenAI account
 2. Go to [this page](https://beta.openai.com/account/api-keys)
 3. Create your API key
 
-## How to procure an Azure Speech Key
+### How to Procure an Azure Speech Key
+
+> Q: Why do I need this?
+>
+> A: This gives her the ability to hear you, and speak.
+
+> Q: Why didn't you just use the [Speech-to-Text](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) and [Text-to-Speech](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance) APIs built into the browser, so that I don't have to bother with making an Azure account?
+>
+> A: In my experimentation, I could not get StT to work well (or at all) on mobile. That's probabably just a skill issue on my part. Furthermore, Azure TSS is simply better IMO. It has high quality voices, each with different "styles" that make her voice very emotive. The Azure API also tells me what the shape of her mouth should look like as she talks, allowing me to animate her more realistically.
 
 1. Make an Azure account
 2. [Create a Speech resource in the azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
@@ -49,8 +69,7 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 
 ## Form
 
-Fill out this form with all your API keys and it will redirect you to the AI Waifu page.
-The raw code for this page is [here](https://github.com/hackdaddy8000/hackdaddy8000.github.io/blob/master/content/blog/unsuperior-ai-waifu.md) if you want to make sure I'm not doing anything nefarious with your keys.
+Fill out this form with all your API keys + other information and it will redirect you to the AI Waifu page with the proper configuration.
 
 <form id="myForm" action="/unsuperior-ai-waifu" method="get">
   <label for="username">User Name:</label>
