@@ -3,7 +3,7 @@ title: Valorant Robot
 date: 2022-07-22 16:43:00
 tags: ["robotics", "3d-printer", "gaming"]
 series: ["Gaming 3D Printer"]
-featured: true
+featured: false
 ---
 
 Yeah, this article is incomplete. I'll get around to finishing it eventually :)
@@ -125,6 +125,8 @@ Source [A](https://reprap.org/wiki/Melzi#Melzi_Arduino_Pin_Numbers) [B](https://
 
 And they can be used as so:
 
+#### Writing Firmware to control servos
+
 ```C
 #include <AccelStepper.h>
 
@@ -148,6 +150,8 @@ void loop() {
 }
 ```
 
+#### Writing Firmware to Display Elements on LCD
+
 ```C
 #include "U8glib.h"
 
@@ -158,7 +162,7 @@ void setup(void) {
   //u8g.setRot180();
 
   u8g.drawBox(10, 10, 10, 10);
-  u8g.drawString(40, 40, "SEO terms: Melzi, modify 3D printer, Kyle Diaz);
+  u8g.drawString(40, 40, "SEO terms: Melzi, modify 3D printer, hackdaddy8000);
 }
 ```
 
@@ -171,12 +175,41 @@ There's one thing I want to note about development on a Melzi board that frustra
 Whether the stepper driver will make the motor move in full, half, quater, etc steps depends on what mode it is in. That can be decided by using the mode pins. The melzi pinout doesn't have any pins to choose the mode because the drivers are hard wired to stay on the 1/16th-step mode.
 ![Melzi stepper driver diagram](/images//melzi-stepper-driver-diagram.jpg)
 
-I really wanted to use full steps for large, sweeping motions and then switch to smaller steps for small aim adjustments but because they hard wired it, I just had to make do.
-The speed of the motor depends on how fast you can alternate its STEP_PIN, so I had to make sure performance was a priority in my code. Moving the stepper motor is typically a blocking statement so so the microcontroller has enough processing power to alternate the STEP_PIN in a stable way. I found all the libraries for Stepper motors extremely limiting because they're suited for constant acceleration.
+I really wanted to use full steps for large, sweeping motions and then switch to smaller steps for small aim adjustments but because they hard wired it, I was eternally stuck with 1/16th steps.
+The speed of the motor depends on how fast you can alternate its STEP_PIN, so I had to make sure performance was a priority in my code. Moving the stepper motor is typically a blocking statement so so the microcontroller has enough processing power to alternate the STEP_PIN in a stable way. I found all the libraries for Stepper motors extremely limiting because they're suited for constant acceleration, and were tailored towards 3D-printer/CNC operations.
+
+I just opted to manually control the servos by manually toggling the pinouts.
 
 #### Custom Firmware Implementation 1 - Inverse P
 
-Inverse P is not a real control system, but it is very easy to implement considering how stepper motors work.
+Inverse P is not a real control system, but it is very easy to implement considering how stepper motors work. As discussed before, the speed of the servo is dependent on how frequently you can flip its pin.
+
+This would theoretically be the fastest you could move the stepper motor assuming the motor could keep up:
+
+```C++
+while (true) {
+  digitalWrite(X_STEP_PIN, HIGH);
+  digitalWrite(X_STEP_PIN, LOW);
+}
+```
+
+You could slow down the speed by throwing a few sleep functions in there, but in my implementation, that loop handles more logic than handling the servos. It has to handle receiving commands from my computer, too. That loop should be running as fast as possible so it can reliably get that data.
+
+Instead of slowing down the loop, we can simply decrease the frequency at which the pins are flipped.
+
+```C++
+int freq = 2;
+int i = 0;
+while (true) {
+  otherLogic();
+  if (i % freq == 0) {
+    flipPin(X_STEP_PIN);
+  }
+  i++;
+}
+```
+
+This worked fine because in reality, the servos could not handle trying to flip the servos as fast as possible on my processor. In practice, freq would be 500 or more.
 
 #### Custom Firmware Implementation 2 - PID
 
@@ -224,4 +257,4 @@ I expect that the video format is unsophisticated and I can easily parse it usin
 
 ## Final Result
 
-<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@swe.chad/video/7164902195979177259" data-video-id="7164902195979177259" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@swe.chad" href="https://www.tiktok.com/@swe.chad?refer=embed">@swe.chad</a> 3D printer glowup <a title="3dprinting" target="_blank" href="https://www.tiktok.com/tag/3dprinting?refer=embed">#3dprinting</a> <a title="techtok" target="_blank" href="https://www.tiktok.com/tag/techtok?refer=embed">#techtok</a> <a title="coding" target="_blank" href="https://www.tiktok.com/tag/coding?refer=embed">#coding</a> <a title="arduino" target="_blank" href="https://www.tiktok.com/tag/arduino?refer=embed">#arduino</a> <a title="makersoftiktok" target="_blank" href="https://www.tiktok.com/tag/makersoftiktok?refer=embed">#makersoftiktok</a> <a title="programming" target="_blank" href="https://www.tiktok.com/tag/programming?refer=embed">#programming</a> <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a> <a title="computersciencemajor" target="_blank" href="https://www.tiktok.com/tag/computersciencemajor?refer=embed">#computersciencemajor</a>  <a title="gaming" target="_blank" href="https://www.tiktok.com/tag/gaming?refer=embed">#gaming</a> <a target="_blank" title="♬ som original - ....🥀🥀" href="https://www.tiktok.com/music/som-original-7140811205777705734?refer=embed">♬ som original - ....🥀🥀</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
+<blockquote class="tiktok-embed" cite="https://www.tiktok.com/@hackdaddy8000/video/7164902195979177259" data-video-id="7164902195979177259" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@hackdaddy8000" href="https://www.tiktok.com/@hackdaddy8000?refer=embed">@hackdaddy8000</a> 3D printer glowup <a title="3dprinting" target="_blank" href="https://www.tiktok.com/tag/3dprinting?refer=embed">#3dprinting</a> <a title="techtok" target="_blank" href="https://www.tiktok.com/tag/techtok?refer=embed">#techtok</a> <a title="coding" target="_blank" href="https://www.tiktok.com/tag/coding?refer=embed">#coding</a> <a title="arduino" target="_blank" href="https://www.tiktok.com/tag/arduino?refer=embed">#arduino</a> <a title="makersoftiktok" target="_blank" href="https://www.tiktok.com/tag/makersoftiktok?refer=embed">#makersoftiktok</a> <a title="programming" target="_blank" href="https://www.tiktok.com/tag/programming?refer=embed">#programming</a> <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a> <a title="computersciencemajor" target="_blank" href="https://www.tiktok.com/tag/computersciencemajor?refer=embed">#computersciencemajor</a>  <a title="gaming" target="_blank" href="https://www.tiktok.com/tag/gaming?refer=embed">#gaming</a> <a target="_blank" title="♬ som original - ....🥀🥀" href="https://www.tiktok.com/music/som-original-7140811205777705734?refer=embed">♬ som original - ....🥀🥀</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
