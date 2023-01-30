@@ -1,6 +1,6 @@
-input[type=text],
-select,
-textarea {
+form input[type=text],
+form select,
+form textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -8,13 +8,12 @@ textarea {
     resize: vertical;
 }
 
-label {
+form label {
     padding: 12px 12px 12px 0;
     display: inline-block;
 }
 
-input[type=submit] {
-    background-color: #04AA6D;
+form input[type=submit] {
     color: white;
     padding: 12px 20px;
     border: none;
@@ -23,7 +22,7 @@ input[type=submit] {
     float: right;
 }
 
-input[type=submit]:hover {
+form input[type=submit]:hover {
     background-color: #45a049;
 }
 
@@ -57,7 +56,7 @@ input[type=submit]:hover {
 
     .col-25,
     .col-75,
-    input[type=submit] {
+    form input[type=submit] {
         width: 100%;
         margin-top: 0;
     }
