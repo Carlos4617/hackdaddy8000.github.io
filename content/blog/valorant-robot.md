@@ -162,7 +162,7 @@ void setup(void) {
 }
 ```
 
-### Complications
+#### Complications
 
 There's one thing I want to note about development on a Melzi board that frustrates me dearly. Stepper motors move in units called "steps" which is dependent on the specific design of the given motor, and is typically 30 degrees. In order to make the motor move a step, you need to alternate the STEP_PIN. If I want to make the motor move 5 steps, I alternate the STEP_PIN 5 times. Stepper motors can also move in half, quarter, eigth and potentially up to 256th of a step depending on the motor. Larger steps make it move faster, and smaller steps allow more precision.
 
@@ -174,13 +174,13 @@ Whether the stepper driver will make the motor move in full, half, quater, etc s
 I really wanted to use full steps for large, sweeping motions and then switch to smaller steps for small aim adjustments but because they hard wired it, I just had to make do.
 The speed of the motor depends on how fast you can alternate its STEP_PIN, so I had to make sure performance was a priority in my code. Moving the stepper motor is typically a blocking statement so so the microcontroller has enough processing power to alternate the STEP_PIN in a stable way. I found all the libraries for Stepper motors extremely limiting because they're suited for constant acceleration.
 
-### Custom Firmware Implementation 1 - Inverse P
+#### Custom Firmware Implementation 1 - Inverse P
 
 Inverse P is not a real control system, but it is very easy to implement considering how stepper motors work.
 
-### Custom Firmware Implementation 2 - PID
+#### Custom Firmware Implementation 2 - PID
 
-## New Detection System
+### New Detection System
 
 Enemies in Valorant are shrouded in a red hue. Simply take a screenshot every frame, look for that red color, and aim at it.
 Here is an unsophisticated function I made for single targets in the practice range.
@@ -222,6 +222,6 @@ I expect that the video format is unsophisticated and I can easily parse it usin
 
 ### IC Design
 
-### Final Result
+## Final Result
 
 <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@swe.chad/video/7164902195979177259" data-video-id="7164902195979177259" style="max-width: 605px;min-width: 325px;" > <section> <a target="_blank" title="@swe.chad" href="https://www.tiktok.com/@swe.chad?refer=embed">@swe.chad</a> 3D printer glowup <a title="3dprinting" target="_blank" href="https://www.tiktok.com/tag/3dprinting?refer=embed">#3dprinting</a> <a title="techtok" target="_blank" href="https://www.tiktok.com/tag/techtok?refer=embed">#techtok</a> <a title="coding" target="_blank" href="https://www.tiktok.com/tag/coding?refer=embed">#coding</a> <a title="arduino" target="_blank" href="https://www.tiktok.com/tag/arduino?refer=embed">#arduino</a> <a title="makersoftiktok" target="_blank" href="https://www.tiktok.com/tag/makersoftiktok?refer=embed">#makersoftiktok</a> <a title="programming" target="_blank" href="https://www.tiktok.com/tag/programming?refer=embed">#programming</a> <a title="computerscience" target="_blank" href="https://www.tiktok.com/tag/computerscience?refer=embed">#computerscience</a> <a title="computersciencemajor" target="_blank" href="https://www.tiktok.com/tag/computersciencemajor?refer=embed">#computersciencemajor</a>  <a title="gaming" target="_blank" href="https://www.tiktok.com/tag/gaming?refer=embed">#gaming</a> <a target="_blank" title="♬ som original - ....🥀🥀" href="https://www.tiktok.com/music/som-original-7140811205777705734?refer=embed">♬ som original - ....🥀🥀</a> </section> </blockquote> <script async src="https://www.tiktok.com/embed.js"></script>
