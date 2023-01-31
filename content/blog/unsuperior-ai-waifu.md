@@ -40,7 +40,7 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 
 > Q: Is this a scam to get my API keys?
 > 
-> A: No. There's nothing I can really take from you. You don't need a credit card to sign up for these websites. The most I could ever steal are your free credits. Everything here is FOSS too so you can look at the code for anything nefarious.
+> A: No. Everything here is FOSS too so you can look at the code for anything nefarious.
 
 ### How to Procure an OpenAI API Key
 
@@ -62,7 +62,7 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 >
 > A: In my experimentation, I could not get StT to work well (or at all) on mobile. That's probabably just a skill issue on my part. Furthermore, Azure TSS is simply better IMO. It has high quality voices, each with different "styles" that make her voice very emotive. The Azure API also tells me what the shape of her mouth should look like as she talks, allowing me to animate her more realistically.
 
-1. Make an Azure account
+1. Make an Azure account. [You don't need a credit card if you use a student email](https://azure.microsoft.com/en-us/free/students/)
 2. [Create a Speech resource in the azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
 3. [Get the API key according to this guide](https://learn.microsoft.com/en-us/azure/cognitive-services/cognitive-services-apis-create-account#get-the-keys-for-your-resource). Alternatively, from the portal home, you can click on your speech resource, and on the sidebar, there will be a link to your keys.
 ![azure portal](/images/speech-portal-key.jpg)
