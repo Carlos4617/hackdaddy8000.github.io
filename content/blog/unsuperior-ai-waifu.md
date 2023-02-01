@@ -134,7 +134,7 @@ Fill out this form with all your API keys + other information and it will redire
         <label for="speech_region">Azure Speech Key:</label>
       </div>
       <div class="col-75">
-        <input type="text" id="speech_key" name="speech_key" required>
+        <input type="text" id="speech_key" name="speech_key">
       </div>
     </div>
     <div class="row">
@@ -142,7 +142,7 @@ Fill out this form with all your API keys + other information and it will redire
         <label for="speech_region">Azure Speech Region:</label>
       </div>
       <div class="col-75">
-        <input type="text" id="speech_region" name="speech_region" placeholder="westus" required>
+        <input type="text" id="speech_region" name="speech_region" placeholder="westus">
       </div>
     </div>
   </div>
