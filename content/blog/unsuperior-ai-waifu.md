@@ -153,7 +153,7 @@ Fill out this form with all your API keys + other information and it will redire
 </form>
 <script>
   // Loads CSS file to make the form look pretty.
-  function loadCSS(filename){
+  function loadCSS(filename) {
     var file = document.createElement("link");
     file.setAttribute("rel", "stylesheet");
     file.setAttribute("type", "text/css");
@@ -175,7 +175,6 @@ Fill out this form with all your API keys + other information and it will redire
     }
     return output.join();
   }
-  var nativeVoiceOptions = getNativeVoiceOptionsAsSelectOptions();
   document.getElementById("engine").onchange = function() {
     selectedIndex = document.getElementById("engine").selectedIndex;
     if (selectedIndex == 0) { // Azure
@@ -183,7 +182,7 @@ Fill out this form with all your API keys + other information and it will redire
       document.getElementById("azure-data").style.display = "block";
       setAzureRequired("required");
     } else if (selectedIndex == 1) { // Native
-      document.getElementById("voice").innerHTML = nativeVoiceOptions;
+      document.getElementById("voice").innerHTML = getNativeVoiceOptionsAsSelectOptions();
       document.getElementById("azure-data").style.display = "none";
       setAzureRequired(""); // Not req
     }
