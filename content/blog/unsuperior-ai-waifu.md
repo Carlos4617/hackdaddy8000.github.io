@@ -173,7 +173,7 @@ Fill out this form with all your API keys + other information and it will redire
     for (let i = 0; i < options.length; i++) {
       output.push(`<option value='${i}'>${options[i].name}</option>`);
     }
-    return output.join();
+    return output.join("");
   }
   document.getElementById("engine").onchange = function() {
     selectedIndex = document.getElementById("engine").selectedIndex;
