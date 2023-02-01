@@ -162,16 +162,28 @@ Fill out this form with all your API keys + other information and it will redire
   }
   loadCSS("/css/form.css");
   // Change form depending on which TTS engine is selected
-  function setAzureRequred(val) {
+  function setAzureRequired(val) {
     document.getElementById("speech_key").attributes.required = val;
     document.getElementById("speech_region").attributes.required = val;
   }
+  var azureVoiceOptions = document.getElementById("voice").innerHTML;
+  function getNativeVoiceOptionsAsSelectOptions() {
+    var output = [];
+    var options = window.speechSynthesis.getVoices();
+    for (let i = 0; i < options.length; i++) {
+      output.push(`<option value='${i}'>${options[i].name}</option>`);
+    }
+    return output.join();
+  }
+  var nativeVoiceOptions = getNativeVoiceOptionsAsSelectOptions();
   document.getElementById("engine").onchange = function() {
     selectedIndex = document.getElementById("engine").selectedIndex;
     if (selectedIndex == 0) { // Azure
+      document.getElementById("voice").innerHTML = azureVoiceOptions;
       document.getElementById("azure-data").style.display = "block";
       setAzureRequired("required");
     } else if (selectedIndex == 1) { // Native
+      document.getElementById("voice").innerHTML = nativeVoiceOptions;
       document.getElementById("azure-data").style.display = "none";
       setAzureRequired(""); // Not req
     }
