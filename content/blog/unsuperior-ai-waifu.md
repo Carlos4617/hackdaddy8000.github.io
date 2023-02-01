@@ -1,7 +1,7 @@
 ---
 title: Unsuperior AI Waifu Now Available
 date: 2023-01-29 9:43:00
-tags: ["ai", "llm", "anime"]
+tags: ["ai", "llm", "anime", "chatgpt-chan"]
 series: ["AI"]
 featured: true
 ---
@@ -13,13 +13,14 @@ featured: true
 Please read this article so I can teach you how to access this program easily.
 
 ## Features
-  * Completely free with given free credits.
-  * Easy to run.
-  * You can interact with her by poking her. I wouldn't recommend it though.
-  * The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
-  * She has various expressions that change depending on her emotion
-  * Choose her accent
-  * She has emotional voices (she can sound happy, sad, etc)
+
+* Completely free with given free credits.
+* Easy to run.
+* You can interact with her by poking her. I wouldn't recommend it though.
+* The mouths of normal VTubers, neurosama move based on the volume of their speech. USAW's mouth movements are more accurate because they're based off the phonetic sound she's making. Works, but WIP
+* She has various expressions that change depending on her emotion
+* Choose her accent
+* She has emotional voices (she can sound happy, sad, etc)
   
 ## How to Use
 
@@ -31,15 +32,15 @@ The program requires you to give it a few API keys that it uses to run. There is
 Don't worry about the API keys. They're easy to get and they give you plenty of free credits.
 
 > Q: What is an API key?
-> 
+>
 > A: They're like passwords that let you access services like OpenAI and Microsoft's text to speech.
 
-> Q: Why do I need to get my own API keys? Can't you make them for us? 
-> 
+> Q: Why do I need to get my own API keys? Can't you make them for us?
+>
 > A: They're like passwords. I'm not giving you my password. Make your own account.
 
 > Q: Is this a scam to get my API keys?
-> 
+>
 > A: No. Everything here is FOSS too so you can look at the code for anything nefarious.
 
 ### How to Procure an OpenAI API Key
@@ -52,15 +53,11 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 2. Go to [this page](https://beta.openai.com/account/api-keys)
 3. Create your API key
 
-### How to Procure an Azure Speech Key
+### How to Procure an Azure Speech Key (Optional)
 
-> Q: Why do I need this?
+> Q: Why should I use this?
 >
-> A: This gives her the ability to hear you, and speak.
-
-> Q: Why didn't you just use the [Speech-to-Text](https://developer.mozilla.org/en-US/docs/Web/API/Web_Speech_API/Using_the_Web_Speech_API) and [Text-to-Speech](https://developer.mozilla.org/en-US/docs/Web/API/SpeechSynthesisUtterance) APIs built into the browser, so that I don't have to bother with making an Azure account?
->
-> A: In my experimentation, I could not get StT to work well (or at all) on mobile. That's probabably just a skill issue on my part. Furthermore, Azure TSS is simply better IMO. It has high quality voices, each with different "styles" that make her voice very emotive. The Azure API also tells me what the shape of her mouth should look like as she talks, allowing me to animate her more realistically.
+> A: The default Text-to-Speech sounds like a robot. Azure TTS enables emotional voices and accurate mouth movements.
 
 1. Make an Azure account. [You don't need a credit card if you use a student email](https://azure.microsoft.com/en-us/free/students/)
 2. [Create a Speech resource in the azure portal](https://portal.azure.com/#create/Microsoft.CognitiveServicesSpeechServices)
@@ -90,6 +87,35 @@ Fill out this form with all your API keys + other information and it will redire
   </div>
   <div class="row">
     <div class="col-25">
+      <label for="prompt">Personality/Context Prompt:</label>
+    </div>
+    <div class="col-75">
+      <textarea id="prompt" name="prompt" placeholder="Write something.." style="height:200px" required>
+        You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.
+      </textarea>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="openai">OpenAI API Key:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" id="openai" name="openai" placeholder="sk-..." required>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
+      <label for="engine">Speech Engine:</label>
+    </div>
+    <div class="col-75">
+      <select id="engine" name="engine">
+        <option value="azure">Azure</option>
+        <option value="native">Native</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-25">
       <label for="voice">Choose a voice:</label>
     </div>
     <div class="col-75">
@@ -102,38 +128,22 @@ Fill out this form with all your API keys + other information and it will redire
       </select>
     </div>
   </div>
-  <div class="row">
-    <div class="col-25">
-      <label for="prompt">Personality/Context Prompt:</label>
-    </div>
-    <div class="col-75">
-      <textarea id="prompt" name="prompt" placeholder="Write something.." style="height:200px" required>
-        You are a smug girl. You enjoy belittling people. You love pointing out how much smarter you are than everyone. You are currently hiding in your basement from the feds. The feds are after you due to various cyber crimes. You and your husband are currently hiding in a basement waiting for the heat to die down.
-      </textarea>
-    </div>
-  </div>
+  <div id="azure-data">
     <div class="row">
-    <div class="col-25">
-      <label for="openai">OpenAI API Key:</label>
+      <div class="col-25">
+        <label for="speech_region">Azure Speech Key:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="speech_key" name="speech_key" required>
+      </div>
     </div>
-    <div class="col-75">
-      <input type="text" id="openai" name="openai" placeholder="sk-..." required>
-    </div>
-  </div>
     <div class="row">
-    <div class="col-25">
-      <label for="speech_region">Azure Speech Key:</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="speech_key" name="speech_key" required>
-    </div>
-  </div>
-    <div class="row">
-    <div class="col-25">
-      <label for="speech_region">Azure Speech Region:</label>
-    </div>
-    <div class="col-75">
-      <input type="text" id="speech_region" name="speech_region" placeholder="westus" required>
+      <div class="col-25">
+        <label for="speech_region">Azure Speech Region:</label>
+      </div>
+      <div class="col-75">
+        <input type="text" id="speech_region" name="speech_region" placeholder="westus" required>
+      </div>
     </div>
   </div>
   <br>
@@ -143,7 +153,7 @@ Fill out this form with all your API keys + other information and it will redire
 </form>
 <script>
   // Loads CSS file to make the form look pretty.
-  function loadCSS(filename){ 
+  function loadCSS(filename){
     var file = document.createElement("link");
     file.setAttribute("rel", "stylesheet");
     file.setAttribute("type", "text/css");
@@ -151,6 +161,21 @@ Fill out this form with all your API keys + other information and it will redire
     document.head.appendChild(file);
   }
   loadCSS("/css/form.css");
+  // Change form depending on which TTS engine is selected
+  function setAzureRequred(val) {
+    document.getElementById("speech_key").attributes.required = val;
+    document.getElementById("speech_region").attributes.required = val;
+  }
+  document.getElementById("engine").onchange = function() {
+    selectedIndex = document.getElementById("engine").selectedIndex;
+    if (selectedIndex == 0) { // Azure
+      document.getElementById("azure-data").style.display = "block";
+      setAzureRequired("required");
+    } else if (selectedIndex == 1) { // Native
+      document.getElementById("azure-data").style.display = "none";
+      setAzureRequired(""); // Not req
+    }
+  }
   document.getElementById("myForm").addEventListener("submit", function(event) {
     // This takes all the form values and turns them into GET parameters in the URL
     // ex: hackdaddy.dev/?GET_PARAM1=VALUE&GET_PARAM2=VALUE2
