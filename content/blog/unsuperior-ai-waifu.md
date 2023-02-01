@@ -167,6 +167,7 @@ Fill out this form with all your API keys + other information and it will redire
     document.getElementById("speech_region").attributes.required = val;
   }
   var azureVoiceOptions = document.getElementById("voice").innerHTML;
+  window.speechSynthesis.getVoices(); // Fetches voices. Preloading.
   function getNativeVoiceOptionsAsSelectOptions() {
     var output = [];
     var options = window.speechSynthesis.getVoices();
