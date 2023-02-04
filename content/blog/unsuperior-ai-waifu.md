@@ -1,5 +1,5 @@
 ---
-title: Unsuperior AI Waifu Now Available
+title: Download Neuro-sama Open Source
 date: 2023-01-29 9:43:00
 tags: ["ai", "llm", "anime", "chatgpt-chan"]
 series: ["AI"]
@@ -53,7 +53,7 @@ Don't worry about the API keys. They're easy to get and they give you plenty of 
 2. Go to [this page](https://beta.openai.com/account/api-keys)
 3. Create your API key
 
-### How to Procure an Azure Speech Key (Optional)
+### How to Procure an Azure Speech Key (Optional on Desktop)
 
 > Q: Why should I use this?
 >
@@ -83,6 +83,18 @@ Fill out this form with all your API keys + other information and it will redire
     </div>
     <div class="col-75">
       <input type="text" id="waifuname" name="waifuname" placeholder="Goku 3">
+    </div>
+  </div>
+  </div>
+   <div class="row">
+    <div class="col-25">
+      <label for="model">Waifu Model:</label>
+    </div>
+    <select id="model" name="model">
+        <option value="shizuku">Orange-Haired Girl</option>
+        <option value="other_unit_90001">Knight Mommy</option>
+        <option value="player_unit_00003">Angel</option>
+      </select>
     </div>
   </div>
   <div class="row">

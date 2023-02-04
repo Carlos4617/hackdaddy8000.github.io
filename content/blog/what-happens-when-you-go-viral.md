@@ -5,6 +5,7 @@ tags: ["clout"]
 series: ["Clout Chaser"]
 featured: true
 ---
+
 Recently I had a post on my TikTok go viral that so far gained 4M views and 580K+ likes and 11K shares.
 Aside from my post, it has been reposted by other people [on Twitter with 77K likes](https://twitter.com/ShitpostGate/status/1592369346667761668?t=1eclUYzGcuPDBXQEW19xAA&s=19), and [on r/pcmasterrace with 2M views and 41K upvotes](https://www.reddit.com/r/pcmasterrace/comments/yr7fz9/most_sane_tiktok_cybersecurity_expert/).
 
@@ -19,6 +20,8 @@ For the rest of my life I will wonder what infuriated this person so much.
 Around the time my TikTok had 2M views (about 1.5 days after I posted it), Barstool Sports reached out to me asking for permission to post my content on their accounts.
 
 In order to submit a video, you must fill out [this form](https://www.barstoolsports.com/videosubmission). By filling out that form, you agree to their "Exclusive Content License & Submission Policy" which is not really a policy but more of an exclusive contract to my video.
+
+In my discussion with Barstool, they made multiple claims that were completely false and I suspect they were trying to mislead me.
 
 ![
     Me: "How do I get compensated?"
