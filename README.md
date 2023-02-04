@@ -1,15 +1,7 @@
-## how to install
+# hackdaddy.dev
 
-Just click `Use this template` to create your blog site by 
+A place for more long-form explanations for hackdaddy8000's creations.
 
-![4dmtph](https://cdn.jsdelivr.net/gh/guangzhengli/PicURL@master/uPic/4dmtph.png)
+## How to contribute
 
-Create a new repository(GitHub Pages) from hugo-ladder-exampleSite to enter : `username.github.io`.
-
-> **replace the username by your GitHub account**
-
-Then configure the GitHub page setting following:
-
-![nsrExo](https://cdn.jsdelivr.net/gh/guangzhengli/PicURL@master/uPic/nsrExo.png)
-
-🎉🎉🎉 Open the browser and enter: https://username.github.io 🎉🎉🎉
+I'm going to work on translating some of my articles to [Chinese](https://hackdaddy.dev/zh/) to help me learn. I will always appreciate PRs correcting my grammatical mistakes.
