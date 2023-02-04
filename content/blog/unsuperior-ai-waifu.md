@@ -24,12 +24,9 @@ Please read this article so I can teach you how to access this program easily.
   
 ## How to Use
 
-You can download [these files](https://github.com/hackdaddy8000/unsuperior-ai-waifu) and open index.html in your web browser. No installation needed. Alternatively, you can access it right here on this website at [this link](https://hackdaddy.dev/unsuperior-ai-waifu).
+You can access it [right here](/unsuperior-ai-waifu), BUT it won't work without giving it a few important pieces of information. The program requires you to give it a few API keys that it uses to run. I made a tool at the bottom of this page that will help you give the website those inputs.
 
-*** You need to input a few values first or else it won't work.
-
-The program requires you to give it a few API keys that it uses to run. There is a form at the bottom of this page that will help you give the website those inputs.
-Don't worry about the API keys. They're easy to get and they give you plenty of free credits.
+Don't worry about the API keys! They're easy to get and they give you plenty of free credits.
 
 > Q: What is an API key?
 >
