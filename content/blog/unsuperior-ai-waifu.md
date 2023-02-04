@@ -119,7 +119,7 @@ Fill out this form with all your API keys + other information and it will redire
         <div class="col-75">
             <select id="engine" name="engine">
                 <option value="azure">Azure</option>
-                <option value="native">Native</option>
+                <option value="native">Native (Desktop Only)</option>
             </select>
         </div>
     </div>
