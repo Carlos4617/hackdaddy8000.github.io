@@ -87,7 +87,8 @@ Fill out this form with all your API keys + other information and it will redire
     <div class="col-25">
       <label for="model">Waifu Model:</label>
     </div>
-    <select id="model" name="model">
+    <div class="col-75">
+      <select id="model" name="model">
         <option value="shizuku">Orange-Haired Girl</option>
         <option value="other_unit_90001">Knight Mommy</option>
         <option value="player_unit_00003">Angel</option>
