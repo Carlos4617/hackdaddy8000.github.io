@@ -1,5 +1,5 @@
 ---
-title: Interesting solution to Leetcode 804 \"Unique Morse Code Words\"
+title: Interesting solution to Leetcode 804 "Unique Morse Code Words"
 date: 2022-08-17T21:34:36+08:00
 tags: ["leetcode"]
 series: ["Leetcode"]
