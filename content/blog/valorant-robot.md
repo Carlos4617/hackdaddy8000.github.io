@@ -1,5 +1,5 @@
 ---
-title: Valorant Robot
+title: Making My 3D Printer Play Valorant
 date: 2022-07-22 16:43:00
 tags: ["robotics", "3d-printer", "gaming"]
 series: ["Gaming 3D Printer"]
