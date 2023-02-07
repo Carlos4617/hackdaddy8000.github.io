@@ -47,20 +47,31 @@ This was not in my original vision of the project, but it's my favorite part.
 If you remember, the GPT input looks like this:
 
 > Me: [what I said]
+>
 > You: [GPT generated response]
+>
 > Me: ...
+>
 > You: ...
 
 I can add more than dialog to this. Instead of dialog, I can do this:
 
 > Me: Look at this
+>
 > // it detects that my speech implies I want her to look at something. It takes a picture and uses CV to determine what she sees. It detects some air jordans
+>
 > *shows you Air Jordans*
+>
 > You: [GPT generates a response from here]
+>
 > // It has various sensors. A light sensor, a temperature sensor, etc. If they detect a change, it informs GPT
+>
 > *the room is now hot*
+>
 > You: [GPT generates a response]
+>
 > *the lights turn off*
+>
 > You: [GPT generates a response]
 
 ### Conclusion
