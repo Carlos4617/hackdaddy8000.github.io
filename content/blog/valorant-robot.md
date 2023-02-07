@@ -10,13 +10,13 @@ Yeah, this article is incomplete. I'll get around to finishing it eventually :)
 
 ## Goal
 
-My friends often call me a "bot" at Valorant because I'm dogwater at the game. The joke was that I would make an actual "bot" that plays better than them. 
+My friends often call me a "bot" at Valorant because I'm dogwater at the game. The joke was that I would make an actual "bot" that plays better than them.
 
 ## Initial Design (Bad)
 
 ### TLDR
 
-I could tell the 3D printer to move to where it sees the red hue of the enemy by sending it GCODE over USB. This did not work.
+I could tell the 3D printer to move to where it sees the red hue of the enemy by sending it GCODE over USB. This did not work because the default 3D printer firmware is not meant to play fast, reactive games like Valorant.
 
 ### Controlling the 3D Printer
 
@@ -24,12 +24,14 @@ Based on the knowledge I initially had on how 3D printers worked, I thought this
 which resembles the same logic as python turtle program. When you slice a 3D object file using a program like Cura or Fusion 360, it creates a file containing instructions on how the head of the 3D printer should move.
 
 For example, if you wanted to make the 3D printer move in a square, you would run this gcode on it -
-```
+
+```gcode
 G91 1 0
 G91 0 1
 G91 -1 0
 G91 0 -1
 ```
+
 where G91 means "move X, Y from the current position" and the second and third parameter are the change in X and Y the head of the 3D printer will undergo.
 This code tells the 3D printer to move one unit up, one unit to the right, one unit down, and finally one unit to the left - making a complete square motion.
 
@@ -46,23 +48,52 @@ ser.write("G91 1 0")
 ser.close()
 ```
 
+### Detection System
+
+Enemies in Valorant are shrouded in a red hue. Simply take a screenshot every frame, look for that red color, and aim at it.
+Here is an unsophisticated function I made for single targets.
+
+```python
+def find_target_pos(img: np.ndarray) -> (int, int):
+    """
+    :param img: 2D array of arrays of len 4 - BGRA
+    :return: (x, y) of center of target if target is found, None if no target is found
+    """
+    # The 2nd and 3rd args are two different shades of red. Upper and lower bounds of the red hue of enemies.
+    filteredImg = cv2.inRange(img, np.array([0x0, 0x0, 0xD5, 0x00]), np.array([0x53, 0x53, 0xFF, 0xFF]))
+    contours, _ = cv2.findContours(filteredImg, 1, 2)
+
+    if len(contours) == 0:
+        return None
+
+    x_sum, y_sum = 0, 0
+    for elem in contours:
+        # contours are double nested for some reason
+        actual_element = elem[0][0]
+        x_sum += actual_element[0]
+        y_sum += actual_element[1]
+    x = x_sum / len(contours)
+    y = y_sum / len(contours)
+
+    return x, y
+```
+
 ### How to Aim
 
-I didn't want to get banned from valorant by tampering with reading memory for enemy locations, so I opted for using image processing to find their location. 
-Enemies in Valorant have a distinct colored glow in order to help players distinguish enemies from the background. Finding enemies was as simple as applying
-a filter for a range around that red hue.
-```
-screenshot
-filter for red
-find centerpoint
-```
+We can use find_target_pos() to get the location of enemies relative to the crosshair. This relative pos will
+tell us how we need to aim.
+
+ie: If the relative position is (100, 0), we need to aim up. If the relative position is (-45, 60), we need to aim 45 pixels down and 60 pixels to the right.
+
+### Mapping Character Movement Space to 3D Printer/Linear Movement Space
 
 ### Why this didn't work
+
+The CV function and mapping character movement to mouse movement was fine. The real problem was working with the 3D printer to create reactive, fluid movements.
 
 I found out that with the default 3D printer firmware, whenever you send a GCODE command to the 3D printer for execution, it adds it to a job queue. It pops from the queue, executes the command, and repeats this. There is no way to clear this queue or cancel a command currently being executed. If the 3D printer is sent commands faster than it can execute them, it will cause the job queue to build up and the 3D printer becomes slow to respond.
 
 Additionally, how the 3D printer executes those commands was bad. The 3D printer will always decellerate to 0m/s upon completion of a move command. This would cause it to move very roughly because it was frequently stopping and starting.
-
 
 ## New Plan
 
@@ -213,42 +244,18 @@ This worked fine because in reality, the servos could not handle trying to flip 
 
 #### Custom Firmware Implementation 2 - PID
 
-### New Detection System
-
-Enemies in Valorant are shrouded in a red hue. Simply take a screenshot every frame, look for that red color, and aim at it.
-Here is an unsophisticated function I made for single targets in the practice range.
-
-```python
-def find_target_pos(img: np.ndarray) -> (int, int):
-    """
-    :param img: 2D array of arrays of len 4 - BGRA
-    :return: (x, y) of center of target if target is found, None if no target is found
-    """
-    img = cv2.inRange(img, np.array([0x0, 0x0, 0xD5, 0x00]), np.array([0x53, 0x53, 0xFF, 0xFF]))
-    contours, _ = cv2.findContours(img, 1, 2)
-
-    if len(contours) == 0:
-        return None
-
-    x_sum, y_sum = 0, 0
-    for elem in contours:
-        # contours are double nested for some reason
-        actual_element = elem[0][0]
-        x_sum += actual_element[0]
-        y_sum += actual_element[1]
-    x = x_sum / len(contours)
-    y = y_sum / len(contours)
-
-    return x, y
-```
-
-## New Detection System Again, but with an FPGA
+## New FPGA Design - Fricking Poggers Giga Awesome
 
 Instead of using a script running on my computer which could potentially be detected, I wanted to create an external device to analyze the video output of my computer.
+
 I started by converting an analog VGA signal to a digital signal and reading it with an Arduino Vidor. The VGA pins are connected to the FPGA which takes advantage of VGA's straightforward encoding format to calculate the "center point" of all red pixels in the given frame. It then saves this in the Vidor's shared memory between the FPGA and ARM chip. I then use the ARM chip to send instructions to the 3D printer over UART. I know it's possible to connect the FPGA directly to the UART chip but I'm having trouble with it for some reason so I had to do it in a needlessly complex way.
+
 I'm currently working on simplifying it using an HDMI decoder to do all the hard work for me.
+
 I orignally used VGA because I heard that unencypting HDMI was a nightmare and would be impossible for me to do on an FPGA (while VGA is a very simple format to parse), but I had not considered the fact that there exists a [perfectly good commercial solution that does that for me](https://www.adafruit.com/product/2218?gclid=Cj0KCQiA-JacBhC0ARIsAIxybyPUmDn_PoanpSMtO_eWGXSdpN4ba6pa2LRg-iZQINdxG4CdUco2cz0aAnRpEALw_wcB)
+
 The current plan is to use a breakout board to get the 40-pin output plugged into my FPGA and then interpret the data there. I can't find any resources on the specifics of which pins are which, but it should be a pixel clock similar to VGA. There is also the possibility that the 40-pin FPC breakout board is not bidirectional. I've only seen videos of people using it to output through the 40-pin connector and not breakout a 40-pin connector to read using an arduino.
+
 ![](/images/3dv2chain.jpg)
 
 I expect that the video format is unsophisticated and I can easily parse it using the FPGA.
