@@ -21,6 +21,17 @@ Please read this article so I can teach you how to access this program easily.
 * She has various expressions that change depending on her emotion
 * Choose her accent
 * She has emotional voices (she can sound happy, sad, etc)
+
+## Compatibility
+
+| Browser | Azure | Native                   |
+|---------|-------|--------------------------|
+| Firefox | Yes   | No                       |
+| Safari  | Yes   | Yes (No sound on mobile) |
+| Chrome  | Yes   | Yes (No sound on mobile) |
+| Edge    | Yes   | Yes (No sound on mobile) |
+
+Untested on Android
   
 ## How to Use
 
