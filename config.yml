@@ -27,7 +27,7 @@ params:
   avatarURL: /images/avatar.png
   author: hackdaddy8000
   authorDescription: The Omega Cyber God
-  info: Here are more in-depth articles about my creations that I know wouldn't make good videos. Feel free to contribute to them on GitHub.
+  info: Here are more in-depth articles about my creations. If you find any mistakes in my articles, feel free to edit them on GitHub.
   favicon: /images/avatar.png
   options:
     showDarkMode: true
@@ -58,7 +58,7 @@ params:
       url: https://umami-ochre-nu.vercel.app/hugo-ladder.js
   guestbook:
     title: Guestbook
-    description: Leave a comment below. It could be anything –- question, appreciation, information, or even humor.
+    description: Write whatever you want below
   social:
     - name: GitHub
       pre: >-
