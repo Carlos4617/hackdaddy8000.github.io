@@ -8,7 +8,7 @@ featured: true
 
 [Github Repo Here](https://github.com/hackdaddy8000/unsuperior-ai-waifu)
 
-![Demo](/images/usaw-demo.gif)
+![Demo](https://github.com/hackdaddy8000/unsuperior-ai-waifu/raw/main/doc/demo.gif)
 
 Please read this article so I can teach you how to access this program easily.
 
